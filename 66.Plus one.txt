@@ -1,0 +1,26 @@
+ vector<int> plusOne(vector<int>& digits) {
+        int n= digits.size();
+        bool carry = true;
+        for(int i=n-1;i>=0;i--){
+            if(digits[i]!=9){
+                digits[i]++;
+     //if carry false thats mean we added 1 successfully
+            carry = false;
+            break;
+            }
+            else 
+            digits[i] = 0;
+        }
+//if carry still true that mean we need another digit
+        if(carry){
+            digits.push_back(0);
+    //now shift all digits to right
+        for(int i=n;i>0;i--){
+        digits[i] = digits[i-1];
+    }
+        digits[0] = 1;
+        }
+        return digits;
+        
+    }
+};

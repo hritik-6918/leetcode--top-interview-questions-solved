@@ -1,0 +1,22 @@
+ vector<string> letterCombinations(string digits) {
+        if(digits.empty())
+            return {};
+        vector<string> pad = {
+        "", "", "abc", "def", "ghi", "jkl",
+        "mno", "pqrs", "tuv", "wxyz"};
+        vector<string> tmp, res;
+        res.push_back("");
+        for(char d:digits)
+        {
+            string s=pad[d-'0'];
+            for(string i:res)
+            {
+                for(char c:s)
+                    tmp.push_back(i+c);
+            }
+            swap(tmp, res);
+            tmp.clear();
+        }
+        return res;
+    }
+};

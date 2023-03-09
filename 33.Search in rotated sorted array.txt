@@ -1,0 +1,42 @@
+int BinarySearch(vector<int>& arr, int s,int e,int k)
+    {
+      while(s<=e)
+      {
+        int mid=(s+e)/2;
+        if(arr[mid]==k)
+          return mid;
+        else if(arr[mid]<k)
+        {
+          s=mid+1;
+        }
+        else
+          e=mid-1;
+      }
+       return -1;
+    }
+
+     int getPivot(vector<int>& arr)
+     {
+       int s=0;
+       int e=arr.size()-1;
+       int mid=(s+e)/2;
+       while(s<e)
+       {
+         if(arr[mid] >= arr[0])
+            s=mid+1;
+          else
+            e=mid;
+        mid=(s+e)/2;
+       }
+       return s;
+     }
+    int search(vector<int>& arr, int target) {
+        int pivot = getPivot(arr);
+        if(arr[pivot]<=target && target <= arr[arr.size()-1])
+        {
+          return BinarySearch(arr,pivot,arr.size()-1,target);
+        }
+        else
+          return BinarySearch(arr,0,pivot-1,target);
+    }
+};

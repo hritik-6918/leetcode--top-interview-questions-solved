@@ -1,0 +1,26 @@
+//using hashSet-O(n)
+    int longestConsecutive(vector<int>& nums) {
+        set<int>hashSet;
+
+        for(int i:nums){
+            hashSet.insert(i);
+        }
+
+        int longestStreak = 0;
+        for(int i:nums){
+            if(!hashSet.count(i-1)){
+            int currNum = i;
+            int currStreak =1;
+
+            while(hashSet.count(currNum+1)){
+                currNum+=1;
+                currStreak+=1;
+            }
+
+            longestStreak = max(longestStreak,currStreak);
+            }
+           
+        }
+          return longestStreak;  
+        }
+};

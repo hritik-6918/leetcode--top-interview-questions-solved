@@ -1,0 +1,22 @@
+void subseq(int count1,int count2,string s,vector<string>&ans,int n){
+    if(count1==n){
+        while(count2<n){
+            s+=")";
+            count2+=1;
+        }
+        ans.push_back(s);
+        return;
+    }
+    subseq(count1+1,count2,s+"(",ans,n);
+
+    if(count2<count1){
+        subseq(count1,count2+1,s+")",ans,n);
+    }
+}
+    vector<string> generateParenthesis(int n) {
+        vector<string>ans;
+        string s;
+        subseq(0,0,s,ans,n);
+        return ans;
+    }
+};

@@ -1,0 +1,25 @@
+void getSentence(string s,int start,string word,vector<string>&wordDict,vector<string>&allSentences){
+    if(start==s.size()){
+        allSentences.push_back(word);
+        return;
+    }
+    for(int i= start;i<=s.size();i++){
+        string currWord = s.substr(start,i-start+1);
+        for(int j =0; j<wordDict.size();j++){
+            if(currWord==wordDict[j]){
+                currWord= word+currWord;
+                if(i!=s.size()-1){
+                    currWord+=" ";
+                }
+                getSentence(s,i+1,currWord,wordDict,allSentences);
+            }
+        }
+    }
+}
+    vector<string> wordBreak(string s, vector<string>& wordDict) {
+        vector<string>allSentence;
+        string word;
+        getSentence(s,0,word,wordDict,allSentence);
+        return allSentence;
+    }
+};

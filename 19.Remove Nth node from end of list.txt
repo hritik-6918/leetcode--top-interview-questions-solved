@@ -1,0 +1,24 @@
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+          ListNode *fast = head, *slow = head;
+
+        for (int i = 0; i < n; i++) 
+            fast = fast->next;
+
+        //If node to be remove is the first node from starting .i.e head node
+        if (fast == NULL){
+            slow = slow->next;
+            delete head;
+            return slow;
+        } 
+    
+        
+        while (fast->next!=NULL)
+            fast = fast->next, slow = slow->next;
+
+        ListNode *temp = slow->next;
+        slow->next = slow->next->next;
+        delete temp;
+        
+        return head;
+    }
+};
